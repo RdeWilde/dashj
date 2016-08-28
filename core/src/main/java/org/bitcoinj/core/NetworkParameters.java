@@ -37,6 +37,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.bitcoinj.core.Coin.COIN;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>NetworkParameters contains the data needed for working with an instantiation of a Bitcoin chain.</p>
@@ -47,6 +49,7 @@ import static org.bitcoinj.core.Coin.COIN;
  * them, you are encouraged to call the static get() methods on each specific context class directly.</p>
  */
 public abstract class NetworkParameters implements Serializable {
+    private static final Logger log = LoggerFactory.getLogger(NetworkParameters.class);
     /**
      * The protocol version this library implements.
      */
@@ -144,11 +147,13 @@ public abstract class NetworkParameters implements Serializable {
 
             scriptPubKeyBytes.write(ScriptOpCodes.OP_CHECKSIG);
             t.addOutput(new TransactionOutput(n, t, Coin.valueOf(CoinDefinition.genesisBlockValue, 0), scriptPubKeyBytes.toByteArray()));
+            genesisBlock.setMerkleRoot(new Sha256Hash(CoinDefinition.genesisMerkleRoot));
         } catch (Exception e) {
             // Cannot happen.
             throw new RuntimeException(e);
         }
         genesisBlock.addTransaction(t);
+        log.info("Genesis Block Information (tx only):" + genesisBlock.toString());
         return genesisBlock;
     }
 
