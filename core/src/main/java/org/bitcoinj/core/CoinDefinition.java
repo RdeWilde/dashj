@@ -139,14 +139,14 @@ public class CoinDefinition {
     public static final Coin GetBlockReward(int height)
     {
         int COIN = 1;
-        Coin nSubsidy = Coin.valueOf(100, 0);
+        Coin nSubsidy = Coin.valueOf(0, 0);
         if (height == 1)
             nSubsidy = Coin.valueOf(420000, 0);
         return nSubsidy;
     }
 
     // TODO
-    public static int subsidyDecreaseBlockCount = 4730400;     //main.cpp GetBlockValue(height, fee)
+    public static int subsidyDecreaseBlockCount = 525600;  // TODO   //main.cpp GetBlockValue(height, fee)
 
     public static BigInteger proofOfWorkLimit = Utils.decodeCompactBits(0x1e0fffffL);  //main.cpp bnProofOfWorkLimit (~uint256(0) >> 20);
 
