@@ -71,9 +71,9 @@ public class CoinDefinition {
     public static final long MAX_COINS = 55000000;                 //main.h:  MAX_MONEY
 
 
-    public static final long DEFAULT_MIN_TX_FEE = 1000;   // MIN_TX_FEE
-    public static final long DUST_LIMIT = 1000; //main.h CTransaction::GetMinFee
-    public static final long INSTANTX_FEE = 1000000;
+    public static final long DEFAULT_MIN_TX_FEE = Coin.valueOf(1000).longValue();   // MIN_TX_FEE
+    public static final long DUST_LIMIT = Coin.valueOf(1000).longValue(); //main.h CTransaction::GetMinFee
+    public static final long INSTANTX_FEE = Coin.valueOf(1000000).longValue();
 
     //
     // Dash 0.12
@@ -127,8 +127,8 @@ public class CoinDefinition {
     public static final int testnetp2shHeader = 196;             //base58.h CBitcoinAddress::SCRIPT_ADDRESS_TEST
     public static final long testnetPacketMagic = 0x5ff21530;      //
     public static final String testnetGenesisHash = "0000070638e1fb122fb31b4753a5311f3c8784604d9f6ce42e8fec96d94173b4";
-    static public long testnetGenesisBlockDifficultyTarget = (0x1e0ffff0L);         //main.cpp: LoadBlockIndex
-    static public long testnetGenesisBlockTime = 1390666206L;                       //main.cpp: LoadBlockIndex
+    static public long testnetGenesisBlockDifficultyTarget = (0x1f00ffffL);         //main.cpp: LoadBlockIndex
+    static public long testnetGenesisBlockTime = 1458750507L;                       //main.cpp: LoadBlockIndex
     static public long testnetGenesisBlockNonce = (72686);                        //main.cpp: LoadBlockIndex
 
 
